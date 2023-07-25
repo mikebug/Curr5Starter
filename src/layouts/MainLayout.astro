@@ -1,0 +1,47 @@
+---
+import HeadCommon from "../components/_Core/Header/HeadCommon.astro";
+import Header from "../components/_Core/Header/Header.astro";
+import LeftSidebar from "../components/_Core/Header/LeftSidebar.astro";
+import RightSidebar from "../components/_Core/Header/RightSidebar.astro";
+import * as CONFIG from "../config";
+import "../styles/main.scss";
+
+const { content = {} } = Astro.props;
+const currentPage = new URL(Astro.request.url).pathname;
+// const currentFile = `src/pages${currentPage.replace(/\/$/, '')}.md`;
+console.log(content);
+---
+
+<html dir={content.dir ?? "ltr"} lang={content.lang ?? "en-us"}>
+  <head>
+    <HeadCommon />
+    <title>
+      {
+        content.title
+          ? `${content.title} 🚀 ${CONFIG.SITE.title}`
+          : CONFIG.SITE.title
+      }
+    </title>
+  </head>
+
+  <body>
+    <div>
+      <Header currentPage={currentPage} />
+    </div>
+    <div style="display: flex; gap: 15px">
+      <div>
+        <div>
+          <LeftSidebar currentPage={currentPage} />
+        </div>
+      </div>
+      <main>
+        <div>
+          <slot />
+        </div>
+      </main>
+      <div>
+        <RightSidebar content={content} />
+      </div>
+    </div>
+  </body>
+</html>

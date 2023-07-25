@@ -1,0 +1,42 @@
+---
+import { SITE } from "../config";
+const navItems = [
+  {
+    title: "M&T Bank",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    url: "/core/introduction",
+    img: "/Core.jpg",
+  },
+  {
+    title: "Willmington Trust",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    url: "/components/buttons",
+    img: "/Components.jpg",
+  },
+];
+---
+
+<div>
+  <header>
+    <h1>
+      {SITE.title}
+    </h1>
+    <p>{SITE.description}</p>
+  </header>
+  <nav>
+    <ul style="display:flex; gap:15px;">
+      {
+        navItems.map(({ title, description, url, img }) => (
+          <a href={url}>
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </a>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script is:inline></script>

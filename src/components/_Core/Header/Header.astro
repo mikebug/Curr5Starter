@@ -1,0 +1,16 @@
+---
+import { SITE } from "../../../config";
+const { currentPage } = Astro.props;
+---
+
+<header>
+  <nav title="Top Navigation">
+    <div>
+      <a class="text-lg font-medium" href="/">
+        <h1>
+          {SITE.title ?? "Documentation"}
+        </h1>
+      </a>
+    </div>
+  </nav>
+</header>
